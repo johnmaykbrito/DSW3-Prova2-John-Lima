@@ -10,13 +10,11 @@
     </h:head>
     <h:body>
         <h:form>
-<!--            <h:dataTable value="#{materias}" var="materia" ></h:dataTable>-->
             <span class="emphasis">#{msgs.title}</span>
             <h:selectOneRadio layout="pageDirection" id="disciplina" value="#{enquete.escolhida}" label="Selecione a disciplina">
                 <c:forEach items="#{materias}" var="materia" varStatus="i">
                     <f:selectItem itemValue="#{i.index}" itemLabel="#{materia}"/>
                 </c:forEach>
-                <!--<f:selectItems value="#{materias}" var="disciplina" itemValue="#{disciplina}" itemLabel="#{disciplina}"/>-->
             </h:selectOneRadio>
             <h:commandButton value="Resultado" action="#{enquete.result}"></h:commandButton>
             <h:commandButton value="Votar" action="#{enquete.votar}"></h:commandButton>
