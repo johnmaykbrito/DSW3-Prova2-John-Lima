@@ -19,8 +19,11 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class Enquete {
 
-    private int escolhida;
+    private static int escolhida;
     private static int[] votos = new int[5];
+    private static Mat mat;
+    private static ArrayList<Mat> mats = new ArrayList<Mat>();
+    private static int totalDeVotos = 0;
     private static ArrayList<String> matsNames = new ArrayList<String>() {
         {
             add("Desenvolvimento de Sistemas Web 3");
@@ -30,9 +33,6 @@ public class Enquete {
             add("Analise e Modelagem Multidimensional");
         }
     };
-    private Mat mat;
-    private static ArrayList<Mat> mats = new ArrayList<Mat>();
-    private static int totalDeVotos = 0;
 
     @PostConstruct
     public void init() {
@@ -51,7 +51,7 @@ public class Enquete {
             mats.get(i).setVotos(votos[i]);
             mats.get(i).setPercent((double) votos[i] / totalDeVotos);
         }
-        System.out.println("Votos " + Arrays.toString(votos));
+        // System.out.println("Votos " + Arrays.toString(votos));
         return "result";
     }
 

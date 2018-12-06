@@ -5,3 +5,18 @@ body {
    font-size: 1.3em;
    font-style: italic;
 }
+
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+tfoot {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {background-color: #fff;}
+
+.erro {
+    color: red;
+}

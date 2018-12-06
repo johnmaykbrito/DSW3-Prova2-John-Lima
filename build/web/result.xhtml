@@ -9,27 +9,31 @@
     </h:head>
     <h:body>        
         <h:dataTable value="#{enquete.mats}" var="materia">
-                <h:column>
-                    <f:facet name="header">Disciplina</f:facet>
-                    <h:outputText value="#{materia.disciplina}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Qtd de votos</f:facet>
-                    <h:outputText value="#{materia.votos}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Porcentagem de votos</f:facet>
-                    <h:outputText value="#{materia.percent}">
-                        <f:convertNumber type="percent" />
-                    </h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Porcentagem de votos</f:facet>
-                    <meter value="#{materia.percent}" min="0" max="#{enqueteBean.qtdVotos}"></meter>
-                </h:column>                
-            </h:dataTable>
+            <h:column>
+                <f:facet name="header"><span class="emphasis">Disciplina</span> </f:facet>
+                <h:outputText value="#{materia.disciplina}"/>
+                <f:facet name="footer"><span class="emphasis">Total de votos</span></f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><span class="emphasis">Qtd de votos</span></f:facet>
+                <h:outputText value="#{materia.votos}"/>
+                <f:facet name="footer"> <span class="emphasis">#{enquete.totalDeVotos}</span></f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><span class="emphasis">Percentual</span></f:facet>
+                <h:outputText value="#{materia.percent}">
+                    <f:convertNumber type="percent" maxFractionDigits="2"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><span class="emphasis">Progresso</span></f:facet>
+                <meter value="#{materia.percent}" min="0" max="#{enqueteBean.qtdVotos}" ></meter>
+            </h:column>   
+        </h:dataTable>
         <h:form>
-            <h:commandLink value="Votar" action="index"/>
+            <h:panelGrid columns="1">
+                <h:commandButton value="Votar" action="index"/>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>

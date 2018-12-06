@@ -5,13 +5,12 @@
  */
 package com.jsf;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author John Lima
  */
 public class Mat {
+
     private String disciplina;
     private int votos;
     private double percent;
@@ -39,6 +38,4 @@ public class Mat {
     public void setPercent(double percent) {
         this.percent = percent;
     }
-    
-    
 }

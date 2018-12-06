@@ -11,13 +11,16 @@
     <h:body>
         <h:form>
             <span class="emphasis">#{msgs.title}</span>
-            <h:selectOneRadio layout="pageDirection" id="disciplina" value="#{enquete.escolhida}" label="Selecione a disciplina">
+            <h:selectOneRadio id="disciplina" value="#{enquete.escolhida}" label="Vote na melhor disciplina" required="true" layout="pageDirection">
                 <c:forEach items="#{materias}" var="materia" varStatus="i">
                     <f:selectItem itemValue="#{i.index}" itemLabel="#{materia}"/>
                 </c:forEach>
             </h:selectOneRadio>
-            <h:commandButton value="Resultado" action="#{enquete.result}"></h:commandButton>
-            <h:commandButton value="Votar" action="#{enquete.votar}"></h:commandButton>
+            <h:panelGrid columns="3">
+                <h:commandButton value="Votar" action="#{enquete.votar}"></h:commandButton>
+                <h:commandButton value="Resultado" action="#{enquete.result}" immediate="true"></h:commandButton>
+                <h:message for="disciplina" class="erro"></h:message>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>
