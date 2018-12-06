@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <title>#{msgs.faceletTitle}</title>
+    </h:head>
+    <h:body>
+        <h:form>
+<!--            <h:dataTable value="#{materias}" var="materia" ></h:dataTable>-->
+            <span class="emphasis">#{msgs.title}</span>
+            <h:selectOneRadio layout="pageDirection" id="disciplina" value="#{enquete.escolhida}" label="Selecione a disciplina">
+                <c:forEach items="#{materias}" var="materia" varStatus="i">
+                    <f:selectItem itemValue="#{i.index}" itemLabel="#{materia}"/>
+                </c:forEach>
+                <!--<f:selectItems value="#{materias}" var="disciplina" itemValue="#{disciplina}" itemLabel="#{disciplina}"/>-->
+            </h:selectOneRadio>
+            <h:commandButton value="Resultado" action="#{enquete.result}"></h:commandButton>
+            <h:commandButton value="Votar" action="#{enquete.votar}"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
